@@ -8,11 +8,24 @@
 
 import UIKit
 
-struct Course {
-    let id: Int
-    let name: String
-    let link: String
-    let imageUrl:String
+struct WebsiteDescription:Decodable {
+    let name : String
+    let description :String
+    let courses: [Course]
+}
+
+struct Course:Decodable {
+    let id: Int?
+    let name: String?
+    let link: String?
+    let imageUrl:String?
+    
+    //    init(json:[String:Any]) {
+    //        id = json["id"] as? Int ?? -1
+    //        name = json["name"] as? String ?? ""
+    //        link = json["link"] as? String ?? ""
+    //        imageUrl = json["imageUrl"] as? String ?? ""
+    //    }
 }
 
 class ViewController: UIViewController {
@@ -24,8 +37,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-//        let jsonUrlString = "https://api.letsbuildthatapp.com/jsondecodable/course"
-              let jsonUrlString = apiRootUrl + apiAccessKey
+        //        let jsonUrlString = "https://api.letsbuildthatapp.com/jsondecodable/course"
+        //              let jsonUrlString = apiRootUrl + apiAccessKey
+        
+        //         let jsonUrlString = "https://api.letsbuildthatapp.com/jsondecodable/courses"
+        
+        //        let jsonUrlString = "https://api.letsbuildthatapp.com/jsondecodable/website_description"
+        
+        let jsonUrlString = "https://api.letsbuildthatapp.com/jsondecodable/courses_missing_fields"
+        
+        
         guard let url = URL(string: jsonUrlString) else {
             return
         }
@@ -33,31 +54,62 @@ class ViewController: UIViewController {
         URLSession.shared.dataTask(with: url) { (data, response, err) in
             //perhaps check err
             //also perhaps check response status 200 ok
-//            print("do strff here")
+            //            print("do strff here")
             
             guard let data = data else {return}
             
-//            let dataAsString = String(data: data, encoding: .utf8)
-//            print(dataAsString)
+            //            let dataAsString = String(data: data, encoding: .utf8)
+            //            print(dataAsString)
             
             do {
-                let  json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-                print(json)
+                
+                let course = try JSONDecoder().decode([Course].self, from: data)
+                
+                for i in course {
+                    print(i)
+                }
+                
+                //                // websiteDescription
+                //
+                //                let websiteDescription = try JSONDecoder().decode(WebsiteDescription.self, from: data)
+                //
+                //                print(websiteDescription.name)
+                
+                //                // for course"s"
+                //                let course = try JSONDecoder().decode([Course].self, from: data)
+                //
+                //                for i in course {
+                //                    print(i)
+                //                }
+                
+                //for swift 4 in course
+                //                let course = try JSONDecoder().decode(Course.self, from: data)
+                //                print(course.name)
+                
+                // in swift 2, 3 , object C
+                //                guard let  json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {return}
+                //
+                //                let course = Course(json: json)
+                //                print (course.name)
+                //
+                
             }catch let jsonErr{
                 
                 print("Error serializing json")
+                print(jsonErr)
+                
                 
             }
             
-        }.resume()
+            }.resume()
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
