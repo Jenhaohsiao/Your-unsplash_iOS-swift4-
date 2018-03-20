@@ -10,60 +10,58 @@ import Foundation
 
 struct UnsplashRoot:Codable{
     
-    var id:String?
-    var created_at:String?
-    var updated_at:String?
-    var width:Int?
-    var height: Int?
-    var categories :[Categories]?
-    var urls:[Urls]?
-    var links:[Links]?
-    var liked_by_user:Bool?
-    var sponsored:Bool?
-    var likes:Int?
-    var user:[User]?
-    var current_user_collections:[Current_user_collections]?
+    let id:String?
+    let created_at:String?
+    let updated_at:String?
+    let width:Int?
+    let height: Int?
+    let categories :[Categories]?
+    let user:User?
+    let urls:Urls?
+    let links:Links?
+    let liked_by_user:Bool?
+    let sponsored:Bool?
+    let likes:Int?
+    let current_user_collections:Current_user_collections?
     
     
     struct Categories:Codable {
         
     }
     
-    struct Urls:Codable {
-        var raw:URL?
-        var full:URL?
-        var regular:URL?
-        var small:URL?
-        var thumb:URL?
+    struct User:Codable {
+        let id:String?
+        let updated_at:String?
+        let username:String?
+        let name:String?
+        let first_name:String?
+        let last_name:String?
+        let twitter_username:String?
+        let portfolio_url:URL?
+        let bio:String?
+        let location:String?
+//        let links:String?
+//        let profile_image:String?
+        let total_collections:Int?
+        let instagram_username:String?
+        let total_likes:Int?
+        let total_photos:Int?
+        
     }
-    
-  
     
     struct Links:Codable {
-        var self_:URL?
-        var html:URL?
-        var download:URL?
-        var download_location:URL?
+        let self_:URL?
+        let html:URL?
+        let download:URL?
+        let download_location:URL?
     }
     
-    struct User:Codable {
-        var id:String?
-        var updated_at:String?
-        var username:String?
-        var name:String?
-        var first_name:String?
-        var last_name:String?
-        var twitter_username:String?
-        var portfolio_url:URL?
-        var bio:String?
-        var location:String?
-//        var links:String?
-//        var profile_image:String?
-        var total_collections:Int?
-        var instagram_username:String?
-        var total_likes:Int?
-        var total_photos:Int?
-        
+    struct Urls:Codable {
+        let raw:URL?
+        let full:URL?
+        let regular:URL?
+        let small:URL?
+        let thumb:URL?
     }
     
     struct Current_user_collections:Codable {
