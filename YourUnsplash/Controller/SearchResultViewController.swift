@@ -44,6 +44,17 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showDetails", sender: self)
+    }
+    
+    // send data by segue to DetailsViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? DetailsViewController {
+            destination.itemDetails = searchResultArray[(resultTableView.indexPathForSelectedRow?.row)!]
+        }
+    }
+    
     func getSource(completed: @escaping() -> ()){
 //        func getSource(){
     
