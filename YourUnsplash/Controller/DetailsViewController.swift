@@ -25,8 +25,7 @@ class DetailsViewController: UIViewController {
         
         //        let strUrl = "https://images.unsplash.com/photo-1521069611610-f684174f19e4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjIzMDY3fQ&s=3d5f24d9487ebb08023b1e6325be09af"
         let imageUrl = itemDetails?.urls?.regular
-//                let imgUrl = URL(string: imageUrl)
-                showUIimage.downloadedFrom(url: imageUrl!)
+        showUIimage.downloadedFrom(url: imageUrl!)
         
     }
     
