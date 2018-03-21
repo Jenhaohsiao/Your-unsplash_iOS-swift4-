@@ -34,10 +34,12 @@ class ViewController: UIViewController {
     }
     
     
+    // get data from API and put into struct
+    
     func getSource(){
         
-        var apiRootUrl:String = "https://api.unsplash.com/photos/?client_id="
-        var apiAccessKey:String = "f36a3f6ba90ed4c4d1872eb8fa50e7933ce1c6b287d44af7c0953c7780953e7c"
+        let apiRootUrl:String = "https://api.unsplash.com/photos/?client_id="
+        let apiAccessKey:String = "f36a3f6ba90ed4c4d1872eb8fa50e7933ce1c6b287d44af7c0953c7780953e7c"
         
         let jsonUrlString = apiRootUrl + apiAccessKey
         
