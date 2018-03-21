@@ -57,8 +57,8 @@
 		221430F92062A10B007BBA9B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2270CD4420618890006B01D4 /* Extension_image.swift */,
 				22750E4C2060AA1E00647994 /* CallUnsplash.swift */,
+				2270CD4420618890006B01D4 /* Extension_image.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -66,9 +66,9 @@
 		221430FA2062A11D007BBA9B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				22750E392060A9AC00647994 /* DetailsViewController.swift */,
 				221430F62062A0D4007BBA9B /* SearchViewController.swift */,
 				221430FB2062A1B4007BBA9B /* SearchResultViewController.swift */,
+				22750E392060A9AC00647994 /* DetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

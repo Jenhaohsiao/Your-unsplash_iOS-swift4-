@@ -15,7 +15,7 @@ struct UnsplashRoot:Codable{
     let updated_at:String?
     let width:Int?
     let height: Int?
-    let categories :[Categories]?
+    let categories :Categories?
     let user:User?
     let urls:Urls?
     let links:Links?

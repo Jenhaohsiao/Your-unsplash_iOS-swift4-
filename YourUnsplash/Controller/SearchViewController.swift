@@ -10,11 +10,18 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
+    @IBOutlet weak var keyWordTextFieid: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func searchButton(_ sender: UIButton) {
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
