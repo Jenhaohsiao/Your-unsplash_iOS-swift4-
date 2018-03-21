@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -59,13 +60,50 @@
         <scene sceneID="4aD-ht-KZd">
             <objects>
                 <viewController id="t7L-lw-hX6" customClass="SearchResultViewController" customModule="YourUnsplash" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="y6B-up-wCX">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="y6B-up-wCX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MDi-hc-Ew6">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MDi-hc-Ew6">
                                 <rect key="frame" x="0.0" y="88" width="375" height="724"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="customCell" rowHeight="250" id="OG5-Z5-w2V" customClass="ResultCellTableViewCell" customModule="YourUnsplash" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="250"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OG5-Z5-w2V" id="nAh-uq-5Rq">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a6O-Lf-DrL">
+                                                    <rect key="frame" x="15" y="11" width="345" height="228"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t03-tb-2Xu">
+                                                    <rect key="frame" x="15" y="14" width="345" height="222"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="222" id="4yV-Fy-kMy"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="t03-tb-2Xu" firstAttribute="leading" secondItem="nAh-uq-5Rq" secondAttribute="leadingMargin" id="1Yi-iH-ved"/>
+                                                <constraint firstItem="t03-tb-2Xu" firstAttribute="trailing" secondItem="nAh-uq-5Rq" secondAttribute="trailingMargin" id="5ZI-rx-g5V"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="t03-tb-2Xu" secondAttribute="bottom" constant="3" id="8ye-0r-OV8"/>
+                                                <constraint firstItem="a6O-Lf-DrL" firstAttribute="leading" secondItem="nAh-uq-5Rq" secondAttribute="leadingMargin" id="Fo5-WT-FpO"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="a6O-Lf-DrL" secondAttribute="trailing" id="Ic7-1r-VZ4"/>
+                                                <constraint firstItem="t03-tb-2Xu" firstAttribute="top" secondItem="nAh-uq-5Rq" secondAttribute="topMargin" constant="3" id="Kq4-7A-Oix"/>
+                                                <constraint firstItem="a6O-Lf-DrL" firstAttribute="top" secondItem="nAh-uq-5Rq" secondAttribute="topMargin" id="OPK-yT-xOQ"/>
+                                                <constraint firstItem="t03-tb-2Xu" firstAttribute="centerY" secondItem="nAh-uq-5Rq" secondAttribute="centerY" id="kQL-BA-v96"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="a6O-Lf-DrL" secondAttribute="bottom" id="yhb-KO-PAd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cellImage" destination="t03-tb-2Xu" id="7qE-WN-6fo"/>
+                                            <outlet property="cellView" destination="a6O-Lf-DrL" id="ier-X4-v5Q"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

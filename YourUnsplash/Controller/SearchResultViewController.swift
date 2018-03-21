@@ -9,7 +9,7 @@
 import UIKit
 
 class SearchResultViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var resultTableView: UITableView!
     
     
@@ -28,7 +28,7 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
         resultTableView.dataSource = self
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -38,12 +38,16 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
         return searchResultArray.count
     }
     
+    // tableview cell data
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        cell.textLabel?.text = searchResultArray[indexPath.row].id
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as! ResultCellTableViewCell
+        let imageUrl = self.searchResultArray[indexPath.row].urls?.small
+        cell.cellImage.downloadedFrom(url: imageUrl!)
         return cell
     }
     
+    
+    //identify the segue
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showDetails", sender: self)
     }
@@ -56,8 +60,8 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func getSource(completed: @escaping() -> ()){
-//        func getSource(){
-    
+        //        func getSource(){
+        
         let apiRootUrl:String = "https://api.unsplash.com/photos/?client_id="
         let apiAccessKey:String = "f36a3f6ba90ed4c4d1872eb8fa50e7933ce1c6b287d44af7c0953c7780953e7c"
         
@@ -74,6 +78,12 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
             do {
                 self.searchResultArray = try JSONDecoder().decode([UnsplashRoot].self, from: data)
                 print("Got source successful")
+                
+                //Check if the result is nil or not
+                guard self.searchResultArray.count != 0 else{
+                    print("We can't get any data from Unsplash")
+                    return
+                }
                 
                 for i in self.searchResultArray{
                     print(i)
@@ -92,15 +102,5 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
             
             }.resume()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
