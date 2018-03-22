@@ -9,7 +9,7 @@
 import UIKit
 
 class ResultCellTableViewCell: UITableViewCell {
-    @IBOutlet weak var cellView: UIView!
+    
     
     @IBOutlet weak var cellImage: UIImageView!
     override func awakeFromNib() {
