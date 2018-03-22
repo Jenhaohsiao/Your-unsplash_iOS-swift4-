@@ -17,6 +17,8 @@ class DetailsViewController: UIViewController {
     
     var itemDetails: UnsplashRoot?
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +30,11 @@ class DetailsViewController: UIViewController {
         let imageUrl = itemDetails?.urls?.regular
         showUIimage.downloadedFrom(url: imageUrl!)
         
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func didReceiveMemoryWarning() {

@@ -27,6 +27,12 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
         resultTableView.delegate = self
         resultTableView.dataSource = self
         
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,6 +49,13 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as! ResultCellTableViewCell
         let imageUrl = self.searchResultArray[indexPath.row].urls?.small
         cell.cellImage.downloadedFrom(url: imageUrl!)
+        
+        cell.cellImage.layer.shadowOpacity = 0.5
+        cell.cellImage.clipsToBounds = true
+        cell.cellImage.layer.cornerRadius = 50
+        
+        
+        
         return cell
     }
     
