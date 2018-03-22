@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class DetailsViewController: UIViewController {
     
@@ -34,6 +35,18 @@ class DetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func saveImage(_ sender: Any) {
+        
+        let imageData = UIImageJPEGRepresentation(showUIimage.image!, 1.0)
+        let compressdImage = UIImage(data:imageData!)
+        UIImageWriteToSavedPhotosAlbum(compressdImage!, nil, nil, nil)
+        
+        let alert = UIAlertController(title: "Saved", message: "This image has been saved", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert,animated: true,completion: nil)
+    }
     
     // get data from API and put into struct
     

@@ -141,15 +141,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mGn-By-fK1">
+                                <rect key="frame" x="100" y="708" width="175" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Save to My phone"/>
+                                <connections>
+                                    <action selector="saveImage:" destination="EpA-1a-e0G" eventType="touchUpInside" id="MMR-Lu-mcf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="mGn-By-fK1" firstAttribute="leading" secondItem="kln-OK-Uvk" secondAttribute="leading" constant="100" id="1Yp-vG-vCa"/>
                             <constraint firstItem="iVv-Bw-sKY" firstAttribute="top" secondItem="kln-OK-Uvk" secondAttribute="top" id="4tz-Ho-VWj"/>
                             <constraint firstItem="iVv-Bw-sKY" firstAttribute="leading" secondItem="kln-OK-Uvk" secondAttribute="leading" id="7qN-9f-ZBc"/>
                             <constraint firstItem="iVv-Bw-sKY" firstAttribute="bottom" secondItem="kln-OK-Uvk" secondAttribute="bottom" id="HI7-4H-jx8"/>
                             <constraint firstItem="qFn-1z-6ia" firstAttribute="leading" secondItem="kln-OK-Uvk" secondAttribute="leading" constant="20" id="Oka-A1-BhA"/>
+                            <constraint firstItem="kln-OK-Uvk" firstAttribute="bottom" secondItem="mGn-By-fK1" secondAttribute="bottom" constant="40" id="Rq0-MO-ttl"/>
                             <constraint firstItem="iVv-Bw-sKY" firstAttribute="trailing" secondItem="kln-OK-Uvk" secondAttribute="trailing" id="Tcy-Wc-8kj"/>
                             <constraint firstItem="qFn-1z-6ia" firstAttribute="top" secondItem="kln-OK-Uvk" secondAttribute="top" constant="20" id="Xyx-rT-zYf"/>
+                            <constraint firstItem="kln-OK-Uvk" firstAttribute="trailing" secondItem="mGn-By-fK1" secondAttribute="trailing" constant="100" id="d8b-y6-3tt"/>
                             <constraint firstItem="kln-OK-Uvk" firstAttribute="trailing" secondItem="qFn-1z-6ia" secondAttribute="trailing" constant="20" id="gC6-Fg-FOO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kln-OK-Uvk"/>
