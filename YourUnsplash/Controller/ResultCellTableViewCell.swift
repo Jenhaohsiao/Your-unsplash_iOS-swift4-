@@ -16,6 +16,7 @@ class ResultCellTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
 
  
 }

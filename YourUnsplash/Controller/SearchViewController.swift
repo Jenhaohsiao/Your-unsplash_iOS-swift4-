@@ -16,8 +16,14 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    
     
     @IBAction func searchButton(_ sender: UIButton) {
     }
