@@ -2,6 +2,6 @@
 
 ## Project goals
 
->  -Using 'Unsplash' API to get pictures 
+>  - Using 'Unsplash' API to get pictures 
 
 (this iOS app still on building stage)
