@@ -1,4 +1,6 @@
 # iOS-swift4_Your-Unsplash
+
+Project goals
 View and download unsplash pictures by using API
 
 (this iOS app still on building stage)
