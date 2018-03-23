@@ -14,6 +14,8 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
     
     
     var searchResultArray = [UnsplashRoot]()
+    var keyWordFromSerchView:String = "nothing"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,8 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
         resultTableView.dataSource = self
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        print("keyWordFromSerchView=" + keyWordFromSerchView)
         
     }
     
@@ -52,8 +56,7 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
         
         cell.cellImage.layer.shadowOpacity = 0.5
         cell.cellImage.clipsToBounds = true
-        cell.cellImage.layer.cornerRadius = 50
-        
+//        cell.cellImage.layer.cornerRadius = 50
         
         
         return cell
@@ -75,10 +78,13 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
     func getSource(completed: @escaping() -> ()){
         //        func getSource(){
         
-        let apiRootUrl:String = "https://api.unsplash.com/photos/?client_id="
+        let apiRootUrl:String = "https://api.unsplash.com/photos/random/?client_id="
         let apiAccessKey:String = "f36a3f6ba90ed4c4d1872eb8fa50e7933ce1c6b287d44af7c0953c7780953e7c"
+        let apiSearchKeyWord:String = "&query=" +  keyWordFromSerchView
+        let apiCount:String = "&count=30"
         
-        let jsonUrlString = apiRootUrl + apiAccessKey
+        let jsonUrlString = apiRootUrl + apiAccessKey + apiSearchKeyWord + apiCount
+        print("jsonUrlString: " + jsonUrlString)
         
         guard let url = URL(string: jsonUrlString) else {
             return
@@ -99,8 +105,8 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
                 }
                 
                 for i in self.searchResultArray{
-                    print(i)
-                    print("")
+//                    print(i)
+//                    print("")
                 }
                 
                 
