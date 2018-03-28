@@ -18,6 +18,7 @@
 		22750E422060A9AC00647994 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22750E412060A9AC00647994 /* Assets.xcassets */; };
 		22750E452060A9AC00647994 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22750E432060A9AC00647994 /* LaunchScreen.storyboard */; };
 		22750E4D2060AA1E00647994 /* CallUnsplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22750E4C2060AA1E00647994 /* CallUnsplash.swift */; };
+		A0A9FC4AF10BFE22A7561128 /* Pods_YourUnsplash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C26531B4FC4F7A2090611A3A /* Pods_YourUnsplash.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,9 @@
 		22750E442060A9AC00647994 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22750E462060A9AC00647994 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22750E4C2060AA1E00647994 /* CallUnsplash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallUnsplash.swift; sourceTree = "<group>"; };
+		8A48DF5C68EB6F41745C86F7 /* Pods-YourUnsplash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourUnsplash.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YourUnsplash/Pods-YourUnsplash.debug.xcconfig"; sourceTree = "<group>"; };
+		A1949F374D9E28CADE1744B7 /* Pods-YourUnsplash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourUnsplash.release.xcconfig"; path = "Pods/Target Support Files/Pods-YourUnsplash/Pods-YourUnsplash.release.xcconfig"; sourceTree = "<group>"; };
+		C26531B4FC4F7A2090611A3A /* Pods_YourUnsplash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourUnsplash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0A9FC4AF10BFE22A7561128 /* Pods_YourUnsplash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +86,8 @@
 			children = (
 				22750E362060A9AC00647994 /* YourUnsplash */,
 				22750E352060A9AC00647994 /* Products */,
+				31D0A81FF3EF3E605E6B62F1 /* Pods */,
+				93AA098D7044CF32E522B7AC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,6 +113,23 @@
 			path = YourUnsplash;
 			sourceTree = "<group>";
 		};
+		31D0A81FF3EF3E605E6B62F1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8A48DF5C68EB6F41745C86F7 /* Pods-YourUnsplash.debug.xcconfig */,
+				A1949F374D9E28CADE1744B7 /* Pods-YourUnsplash.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		93AA098D7044CF32E522B7AC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C26531B4FC4F7A2090611A3A /* Pods_YourUnsplash.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -113,9 +137,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22750E492060A9AC00647994 /* Build configuration list for PBXNativeTarget "YourUnsplash" */;
 			buildPhases = (
+				B3F8770716EB683A53A735EE /* [CP] Check Pods Manifest.lock */,
 				22750E302060A9AC00647994 /* Sources */,
 				22750E312060A9AC00647994 /* Frameworks */,
 				22750E322060A9AC00647994 /* Resources */,
+				2FD7BB40E771CB4AB8C11AC2 /* [CP] Embed Pods Frameworks */,
+				326EE6AE551E9050CA510242 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -172,6 +199,60 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2FD7BB40E771CB4AB8C11AC2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-YourUnsplash/Pods-YourUnsplash-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YourUnsplash/Pods-YourUnsplash-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		326EE6AE551E9050CA510242 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YourUnsplash/Pods-YourUnsplash-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3F8770716EB683A53A735EE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YourUnsplash-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		22750E302060A9AC00647994 /* Sources */ = {
@@ -320,6 +401,7 @@
 		};
 		22750E4A2060A9AC00647994 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A48DF5C68EB6F41745C86F7 /* Pods-YourUnsplash.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -335,6 +417,7 @@
 		};
 		22750E4B2060A9AC00647994 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1949F374D9E28CADE1744B7 /* Pods-YourUnsplash.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
