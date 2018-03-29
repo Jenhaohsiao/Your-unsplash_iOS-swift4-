@@ -7,41 +7,73 @@
 
 import UIKit
 
+
 class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let fullScreenSize = UIScreen.main.bounds.size
-    var newViewTableView: UITableView!
+//    var newViewTableView: UITableView!
     
     var searchResultArray = [UnsplashRoot]()
     
-
-
+    @IBOutlet weak var newViewTableView: UITableView!
     
     let dispatchGroup = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
+//        self.setUpTableView()
+//        self.view.addSubview(newViewTableView)
         
-        print("self.searchResultArray=\(self.searchResultArray)")
+        self.newViewTableView.delegate = self
+        self.newViewTableView.dataSource = self
+        self.newViewTableView.separatorStyle = .none
         
-        self.setUpTableView()
-        self.view.addSubview(newViewTableView)
         self.newViewTableView.reloadData()
         
         getSource {
             self.newViewTableView.reloadData()
         }
-        
+        self.newViewTableView.estimatedRowHeight = 200
+        self.newViewTableView.rowHeight = UITableViewAutomaticDimension
+
     
     }
     
     override func viewWillAppear(_ animated: Bool) {
+  
         self.newViewTableView.estimatedRowHeight = 200
         self.newViewTableView.rowHeight = UITableViewAutomaticDimension
 
     }
+    
+    func setUpTableView() {
+        
+        // set up newView Table view
+        self.newViewTableView = UITableView(
+            frame: CGRect(
+                x: 0,
+                y: 0,
+                width: self.fullScreenSize.width,
+                height: self.fullScreenSize.height) ,
+            style: .grouped)
+        
+        
+        
+        // register cell
+//        self.newViewTableView.register(ResultCellTableViewCell.self, forCellReuseIdentifier: "customCell")
+        
+//        self.newViewTableView.delegate = self
+//        self.newViewTableView.dataSource = self
+//        self.newViewTableView.separatorStyle = .none
+//        self.newViewTableView.contentMode = .scaleToFill
+//        self.newViewTableView.semanticContentAttribute = .unspecified
+//        //        self.newViewTableView.separatorInset = UIEdgeInsetsMake(1, 1, 1, 1)
+//        self.newViewTableView.allowsSelection = true
+//        self.newViewTableView.allowsMultipleSelection = false
+        
+    }
+    
     
     func getSource(completed: @escaping() -> ()){
         //        func getSource(){
@@ -104,21 +136,23 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         let cell = self.newViewTableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! ResultCellTableViewCell
         
-        let imageUrl = self.searchResultArray[indexPath.row].urls?.small
+//        let imageUrl = self.searchResultArray[indexPath.row].urls?.small
+        let imageUrl = self.searchResultArray[indexPath.row].urls?.regular
         cell.cellImage.downloadedFrom(url: imageUrl!)
-
-        cell.cellImage.layer.shadowOpacity = 0.5
-        cell.cellImage.clipsToBounds = true
 
         return cell
         
     
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 200
-//    }
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
+        var rowHight = (Float(self.searchResultArray[indexPath.row].height!) * 0.1)
+        if rowHight < 300 {
+            rowHight = 300
+        }
+        return CGFloat(rowHight)
+    }
 
 
     override func didReceiveMemoryWarning() {
@@ -128,33 +162,33 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
   
     
-    func setUpTableView() {
-        
-        // set up newView Table view
-        self.newViewTableView = UITableView(
-            frame: CGRect(
-                x: 0,
-                y: 0,
-                width: self.fullScreenSize.width,
-                height: self.fullScreenSize.height) ,
-            style: .grouped)
-        
-     
-        
-        // register cell
-        self.newViewTableView.register(ResultCellTableViewCell.self, forCellReuseIdentifier: "customCell")
-        
-        self.newViewTableView.delegate = self
-        self.newViewTableView.dataSource = self
-        self.newViewTableView.separatorStyle = .none
-        self.newViewTableView.contentMode = .scaleToFill
-        self.newViewTableView.semanticContentAttribute = .unspecified
-//        self.newViewTableView.separatorInset = UIEdgeInsetsMake(1, 1, 1, 1)
-        self.newViewTableView.allowsSelection = true
-        self.newViewTableView.allowsMultipleSelection = false
-        
-    }
-    
+//    func setUpTableView() {
+//
+//        // set up newView Table view
+//        self.newViewTableView = UITableView(
+//            frame: CGRect(
+//                x: 0,
+//                y: 0,
+//                width: self.fullScreenSize.width,
+//                height: self.fullScreenSize.height) ,
+//            style: .grouped)
+//
+//
+//
+//        // register cell
+//        self.newViewTableView.register(ResultCellTableViewCell.self, forCellReuseIdentifier: "customCell")
+//
+//        self.newViewTableView.delegate = self
+//        self.newViewTableView.dataSource = self
+//        self.newViewTableView.separatorStyle = .none
+//        self.newViewTableView.contentMode = .scaleToFill
+//        self.newViewTableView.semanticContentAttribute = .unspecified
+////        self.newViewTableView.separatorInset = UIEdgeInsetsMake(1, 1, 1, 1)
+//        self.newViewTableView.allowsSelection = true
+//        self.newViewTableView.allowsMultipleSelection = false
+//
+//    }
+//
 
     
 }
