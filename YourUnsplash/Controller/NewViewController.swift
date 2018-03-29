@@ -23,7 +23,6 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.searchResultArray = GetArray.getArrayfunc(keyword: "")
         print("self.searchResultArray=\(self.searchResultArray)")
         
         self.setUpTableView()
