@@ -8,36 +8,125 @@
 import UIKit
 
 class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var info = [
-  
-    "陳偉殷","王建民","陳金鋒","林智勝"
-    ]
     
     let fullScreenSize = UIScreen.main.bounds.size
     var newViewTableView: UITableView!
-    let newRefreshControl = UIRefreshControl()
     
     var searchResultArray = [UnsplashRoot]()
     
-   
+
+
+    
+    let dispatchGroup = DispatchGroup()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
         
         print("self.searchResultArray=\(self.searchResultArray)")
         
         self.setUpTableView()
         self.view.addSubview(newViewTableView)
-        
         self.newViewTableView.reloadData()
-        self.newRefreshControl.addTarget(self, action: #selector(NewViewController.refreshList), for: .valueChanged)
+        
+        getSource {
+            self.newViewTableView.reloadData()
+        }
+        
+    
     }
     
-    @objc func refreshList(){
-        print("refreshList")
+    override func viewWillAppear(_ animated: Bool) {
+        self.newViewTableView.estimatedRowHeight = 200
+        self.newViewTableView.rowHeight = UITableViewAutomaticDimension
+
     }
+    
+    func getSource(completed: @escaping() -> ()){
+        //        func getSource(){
+        
+        let apiRootUrl:String = "https://api.unsplash.com/photos/random/?client_id="
+        let apiAccessKey:String = "f36a3f6ba90ed4c4d1872eb8fa50e7933ce1c6b287d44af7c0953c7780953e7c"
+//        let apiSearchKeyWord:String = "&query=" +  keyWordFromSerchView
+        let apiCount:String = "&count=30"
+        
+//        let jsonUrlString = apiRootUrl + apiAccessKey + apiSearchKeyWord + apiCount
+        let jsonUrlString = apiRootUrl + apiAccessKey + apiCount
+        print("jsonUrlString: " + jsonUrlString)
+        
+        guard let url = URL(string: jsonUrlString) else {
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, err) in
+            //perhaps check err
+            guard let data = data else {return}
+            
+            do {
+                self.searchResultArray = try JSONDecoder().decode([UnsplashRoot].self, from: data)
+                print("Got source successful")
+                
+                //Check if the result is nil or not
+                guard self.searchResultArray.count != 0 else{
+                    print("We can't get any data from Unsplash")
+                    return
+                }
+                
+                for i in self.searchResultArray{
+                    //                    print(i)
+                    //                    print("")
+                }
+                
+                
+                DispatchQueue.main.async{
+                    completed()
+                }
+                
+            }catch let jsonErr{
+                print("Error serializing json")
+                print(jsonErr)
+            }
+            
+            }.resume()
+    }
+    
+  
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("searchResultArray.count=\(searchResultArray.count)")
+        return searchResultArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cellIdentifier = "customCell"
+        
+        let cell = self.newViewTableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! ResultCellTableViewCell
+        
+        let imageUrl = self.searchResultArray[indexPath.row].urls?.small
+        cell.cellImage.downloadedFrom(url: imageUrl!)
+
+        cell.cellImage.layer.shadowOpacity = 0.5
+        cell.cellImage.clipsToBounds = true
+
+        return cell
+        
+    
+    }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 200
+//    }
     
 
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
+  
     
     func setUpTableView() {
         
@@ -45,57 +134,25 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         self.newViewTableView = UITableView(
             frame: CGRect(
                 x: 0,
-                y: 64,
+                y: 0,
                 width: self.fullScreenSize.width,
-                height: self.fullScreenSize.height - 64) ,
+                height: self.fullScreenSize.height) ,
             style: .grouped)
         
+     
+        
         // register cell
-        newViewTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-
-        newViewTableView.delegate = self
-        newViewTableView.dataSource = self
-        newViewTableView.separatorStyle = .none
-        newViewTableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        newViewTableView.allowsSelection = true
-        newViewTableView.allowsMultipleSelection = false
-       
+        self.newViewTableView.register(ResultCellTableViewCell.self, forCellReuseIdentifier: "customCell")
         
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("searchResultArray.count=\(searchResultArray.count)")
-//        return searchResultArray.count
-        return info.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as! ResultCellTableViewCell
-//        let imageUrl = self.searchResultArray[indexPath.row].urls?.small
-//        cell.cellImage.downloadedFrom(url: imageUrl!)
-//
-//        cell.cellImage.layer.shadowOpacity = 0.5
-//        cell.cellImage.clipsToBounds = true
-//
-//        return cell
+        self.newViewTableView.delegate = self
+        self.newViewTableView.dataSource = self
+        self.newViewTableView.separatorStyle = .none
+        self.newViewTableView.contentMode = .scaleToFill
+        self.newViewTableView.semanticContentAttribute = .unspecified
+//        self.newViewTableView.separatorInset = UIEdgeInsetsMake(1, 1, 1, 1)
+        self.newViewTableView.allowsSelection = true
+        self.newViewTableView.allowsMultipleSelection = false
         
-        let cell =
-            tableView.dequeueReusableCell(
-                withIdentifier: "Cell", for: indexPath) as
-        UITableViewCell
-        
-        if let myLabel = cell.textLabel {
-            myLabel.text =
-            "\(info[indexPath.row])"
-        }
-        
-        return cell
-    }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 

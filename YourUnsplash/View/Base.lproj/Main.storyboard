@@ -187,9 +187,6 @@
                                                 <constraint firstItem="t03-tb-2Xu" firstAttribute="centerY" secondItem="nAh-uq-5Rq" secondAttribute="centerY" id="kQL-BA-v96"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="cellImage" destination="t03-tb-2Xu" id="7qE-WN-6fo"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -268,6 +265,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="W1T-tJ-5cu" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="AQ6-u8-tG0">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
