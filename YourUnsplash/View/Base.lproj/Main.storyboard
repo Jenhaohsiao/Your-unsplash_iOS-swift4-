@@ -33,10 +33,27 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Ad-UX-ql5">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="199.66666666666666"/>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D3v-b4-1Pd">
+                                                    <rect key="frame" x="16" y="124" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="J7g-u4-ZJf"/>
+                                                        <constraint firstAttribute="height" constant="50" id="lqt-yl-fk6"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMR-hY-l6j">
+                                                    <rect key="frame" x="76" y="148" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="4Ad-UX-ql5" firstAttribute="leading" secondItem="YeK-7E-BCl" secondAttribute="leading" id="BPP-lB-bD5"/>
+                                                <constraint firstItem="UMR-hY-l6j" firstAttribute="leading" secondItem="D3v-b4-1Pd" secondAttribute="trailing" constant="10" id="Gk3-Rr-tpb"/>
                                                 <constraint firstAttribute="bottom" secondItem="4Ad-UX-ql5" secondAttribute="bottom" id="Hjh-pp-kgz"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="UMR-hY-l6j" secondAttribute="bottom" constant="20" id="X85-Nt-kqD"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="D3v-b4-1Pd" secondAttribute="bottom" constant="15" id="n4n-Kq-ium"/>
+                                                <constraint firstItem="D3v-b4-1Pd" firstAttribute="leading" secondItem="YeK-7E-BCl" secondAttribute="leadingMargin" constant="1" id="oz2-9R-JH6"/>
                                                 <constraint firstAttribute="trailing" secondItem="4Ad-UX-ql5" secondAttribute="trailing" id="sOQ-Ao-BSL"/>
                                                 <constraint firstItem="4Ad-UX-ql5" firstAttribute="top" secondItem="YeK-7E-BCl" secondAttribute="top" id="xcB-xR-E6B"/>
                                             </constraints>
@@ -44,6 +61,8 @@
                                         <connections>
                                             <outlet property="cellImage" destination="4Ad-UX-ql5" id="fsp-0h-ISe"/>
                                             <outlet property="cellView" destination="YeK-7E-BCl" id="sRh-0B-DV0"/>
+                                            <outlet property="profile_image" destination="D3v-b4-1Pd" id="2jb-9F-D9r"/>
+                                            <outlet property="profile_name" destination="UMR-hY-l6j" id="LIa-pe-OTD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
