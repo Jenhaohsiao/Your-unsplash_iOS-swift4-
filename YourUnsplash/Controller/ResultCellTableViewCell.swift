@@ -15,31 +15,36 @@ class ResultCellTableViewCell: UITableViewCell {
     
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var cellImage: UIImageView!
+     var profile_image: UIImageView!
+     var profile_name: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         // Initialization code
+        
     }
     
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.cellImage =  UIImageView.init(frame: CGRect(x: 0, y: 0, width: fullScreenSize.width, height: fullScreenSize.height * 0.5))
+//         self.contentView.addSubview(self.cellImage)
+        
+        self.profile_image = UIImageView.init(frame: CGRect(x: 10, y: 10, width: 50, height: 50))
+        self.contentView.addSubview(self.profile_image)
+        
+        self.profile_name = UILabel(frame:CGRect.init(x: 50, y: 10, width:fullScreenSize.width - 80,height: 50))
+        self.profile_name.text = "test"
+        self.profile_name.font = UIFont.systemFont(ofSize: 15.0)
+        self.profile_name.textColor = UIColor.white
+        self.contentView.addSubview(self.profile_name)
+    }
     
-//
-//    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-//        super.init(style: style, reuseIdentifier: reuseIdentifier)
-//
-//        self.cellImage.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-//        self.cellImage.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-//        self.cellImage.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-//        self.cellImage.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-//
-//        self.addSubview(self.cellImage)
-//
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//
+    required init?(coder aDecoder: NSCoder) {
+       super.init(coder: aDecoder)
+    }
+    
     
     
 }
