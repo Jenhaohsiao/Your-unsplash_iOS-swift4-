@@ -88,7 +88,7 @@
 				221430F62062A0D4007BBA9B /* SearchViewController.swift */,
 				221430FB2062A1B4007BBA9B /* SearchResultViewController.swift */,
 				22750E392060A9AC00647994 /* DetailsViewController.swift */,
-				221430FF2062F066007BBA9B /* ResultCellTableViewCell.swift */,
+				22C8426B206DED9300390AAF /* Cell */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -123,6 +123,14 @@
 				22750E3E2060A9AC00647994 /* YourUnsplash.xcdatamodeld */,
 			);
 			path = YourUnsplash;
+			sourceTree = "<group>";
+		};
+		22C8426B206DED9300390AAF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				221430FF2062F066007BBA9B /* ResultCellTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		31D0A81FF3EF3E605E6B62F1 /* Pods */ = {

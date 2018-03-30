@@ -41,11 +41,19 @@ struct UnsplashRoot:Codable{
         let bio:String?
         let location:String?
 //        let links:String?
-//        let profile_image:String?
+        let profile_image:Profile_image?
         let total_collections:Int?
         let instagram_username:String?
         let total_likes:Int?
         let total_photos:Int?
+        
+        
+        struct Profile_image:Codable {
+            let small:URL?
+            let medium:URL?
+            let large:URL?
+        }
+        
         
     }
     

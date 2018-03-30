@@ -11,7 +11,6 @@ import UIKit
 class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let fullScreenSize = UIScreen.main.bounds.size
-//    var newViewTableView: UITableView!
     
     var searchResultArray = [UnsplashRoot]()
     
@@ -21,10 +20,6 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        self.setUpTableView()
-//        self.view.addSubview(newViewTableView)
-        
         self.newViewTableView.delegate = self
         self.newViewTableView.dataSource = self
         self.newViewTableView.separatorStyle = .none
@@ -36,54 +31,24 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         self.newViewTableView.estimatedRowHeight = 200
         self.newViewTableView.rowHeight = UITableViewAutomaticDimension
-
-    
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-  
+        
         self.newViewTableView.estimatedRowHeight = 200
         self.newViewTableView.rowHeight = UITableViewAutomaticDimension
-
-    }
-    
-    func setUpTableView() {
-        
-        // set up newView Table view
-        self.newViewTableView = UITableView(
-            frame: CGRect(
-                x: 0,
-                y: 0,
-                width: self.fullScreenSize.width,
-                height: self.fullScreenSize.height) ,
-            style: .grouped)
-        
-        
-        
-        // register cell
-//        self.newViewTableView.register(ResultCellTableViewCell.self, forCellReuseIdentifier: "customCell")
-        
-//        self.newViewTableView.delegate = self
-//        self.newViewTableView.dataSource = self
-//        self.newViewTableView.separatorStyle = .none
-//        self.newViewTableView.contentMode = .scaleToFill
-//        self.newViewTableView.semanticContentAttribute = .unspecified
-//        //        self.newViewTableView.separatorInset = UIEdgeInsetsMake(1, 1, 1, 1)
-//        self.newViewTableView.allowsSelection = true
-//        self.newViewTableView.allowsMultipleSelection = false
         
     }
-    
     
     func getSource(completed: @escaping() -> ()){
-        //        func getSource(){
-        
-        let apiRootUrl:String = "https://api.unsplash.com/photos/random/?client_id="
+
+        let apiRootUrl:String = "https://api.unsplash.com/photos/?client_id="
         let apiAccessKey:String = "f36a3f6ba90ed4c4d1872eb8fa50e7933ce1c6b287d44af7c0953c7780953e7c"
-//        let apiSearchKeyWord:String = "&query=" +  keyWordFromSerchView
-        let apiCount:String = "&count=30"
+        //        let apiSearchKeyWord:String = "&query=" +  keyWordFromSerchView
+        let apiCount:String = "&count=10"
         
-//        let jsonUrlString = apiRootUrl + apiAccessKey + apiSearchKeyWord + apiCount
+        //        let jsonUrlString = apiRootUrl + apiAccessKey + apiSearchKeyWord + apiCount
         let jsonUrlString = apiRootUrl + apiAccessKey + apiCount
         print("jsonUrlString: " + jsonUrlString)
         
@@ -105,12 +70,6 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     return
                 }
                 
-                for i in self.searchResultArray{
-                    //                    print(i)
-                    //                    print("")
-                }
-                
-                
                 DispatchQueue.main.async{
                     completed()
                 }
@@ -123,7 +82,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             }.resume()
     }
     
-  
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("searchResultArray.count=\(searchResultArray.count)")
@@ -131,64 +90,50 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cellIdentifier = "customCell"
-        
         let cell = self.newViewTableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! ResultCellTableViewCell
         
-//        let imageUrl = self.searchResultArray[indexPath.row].urls?.small
+        // set up the image
         let imageUrl = self.searchResultArray[indexPath.row].urls?.regular
         cell.cellImage.downloadedFrom(url: imageUrl!)
-
+        
+        //set up the profile image
+        let profileImageUrl = self.searchResultArray[indexPath.row].user?.profile_image?.medium
+        cell.profile_image.downloadedFrom(url: (profileImageUrl)!)
+        cell.profile_image.layer.cornerRadius = 10
+        cell.profile_image.layer.masksToBounds = true
+        
+        //Set up the Lable
+        let profileNameString = self.searchResultArray[indexPath.row].user?.name
+        cell.profile_name.text = "  \(profileNameString!)  "
+        cell.profile_name.font = UIFont.systemFont(ofSize: 20.0)
+        cell.profile_name.alpha = 0.6
+        
+        cell.profile_name.layer.cornerRadius = 5
+        cell.profile_name.layer.backgroundColor = UIColor.black.cgColor
+        cell.profile_name.textColor = UIColor.white
+        
         return cell
         
-    
+        
     }
     
+    
+    // Setup the height For Row, by image size
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-
+        
         var rowHight = (Float(self.searchResultArray[indexPath.row].height!) * 0.1)
         if rowHight < 300 {
             rowHight = 300
         }
         return CGFloat(rowHight)
     }
-
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-  
-    
-//    func setUpTableView() {
-//
-//        // set up newView Table view
-//        self.newViewTableView = UITableView(
-//            frame: CGRect(
-//                x: 0,
-//                y: 0,
-//                width: self.fullScreenSize.width,
-//                height: self.fullScreenSize.height) ,
-//            style: .grouped)
-//
-//
-//
-//        // register cell
-//        self.newViewTableView.register(ResultCellTableViewCell.self, forCellReuseIdentifier: "customCell")
-//
-//        self.newViewTableView.delegate = self
-//        self.newViewTableView.dataSource = self
-//        self.newViewTableView.separatorStyle = .none
-//        self.newViewTableView.contentMode = .scaleToFill
-//        self.newViewTableView.semanticContentAttribute = .unspecified
-////        self.newViewTableView.separatorInset = UIEdgeInsetsMake(1, 1, 1, 1)
-//        self.newViewTableView.allowsSelection = true
-//        self.newViewTableView.allowsMultipleSelection = false
-//
-//    }
-//
-
     
 }
