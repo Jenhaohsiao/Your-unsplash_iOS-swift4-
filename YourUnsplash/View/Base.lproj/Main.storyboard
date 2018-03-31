@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W1T-tJ-5cu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W1T-tJ-5cu">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -80,6 +79,7 @@
                     <tabBarItem key="tabBarItem" title="New" id="SPE-aw-pMG"/>
                     <connections>
                         <outlet property="newViewTableView" destination="v7h-vc-3bV" id="PUt-i9-KaZ"/>
+                        <segue destination="itD-8A-Mrv" kind="show" identifier="showSinglePhoto" id="Y4E-3E-XYj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sc4-wV-58X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -150,20 +150,51 @@
             </objects>
             <point key="canvasLocation" x="1761" y="-103"/>
         </scene>
-        <!--View Controller-->
+        <!--Single Photo View Controller-->
         <scene sceneID="AAY-rn-Rel">
             <objects>
-                <viewController id="itD-8A-Mrv" sceneMemberID="viewController">
+                <viewController id="itD-8A-Mrv" customClass="SinglePhotoViewController" customModule="YourUnsplash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RuX-oh-awq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gwE-nV-DW4">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jq8-jF-PWR">
+                                <rect key="frame" x="20" y="64" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="goBackAction:" destination="itD-8A-Mrv" eventType="touchUpInside" id="QO5-SZ-uTW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XSM-SE-Fjy">
+                                <rect key="frame" x="313" y="728" width="47" height="30"/>
+                                <state key="normal" title="Author"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gwE-nV-DW4" firstAttribute="top" secondItem="QbU-Yo-uC7" secondAttribute="top" id="2XY-P3-oJx"/>
+                            <constraint firstItem="jq8-jF-PWR" firstAttribute="leading" secondItem="QbU-Yo-uC7" secondAttribute="leading" constant="20" id="DmB-x6-65M"/>
+                            <constraint firstItem="QbU-Yo-uC7" firstAttribute="trailing" secondItem="gwE-nV-DW4" secondAttribute="trailing" id="FLS-Pb-raR"/>
+                            <constraint firstItem="jq8-jF-PWR" firstAttribute="top" secondItem="QbU-Yo-uC7" secondAttribute="top" constant="20" id="Mcy-Ud-LD3"/>
+                            <constraint firstItem="QbU-Yo-uC7" firstAttribute="trailing" secondItem="XSM-SE-Fjy" secondAttribute="trailing" constant="15" id="PqD-aG-I51"/>
+                            <constraint firstItem="gwE-nV-DW4" firstAttribute="leading" secondItem="QbU-Yo-uC7" secondAttribute="leading" id="alT-xt-Vd1"/>
+                            <constraint firstItem="QbU-Yo-uC7" firstAttribute="bottom" secondItem="gwE-nV-DW4" secondAttribute="bottom" id="cb3-cg-XJB"/>
+                            <constraint firstItem="QbU-Yo-uC7" firstAttribute="bottom" secondItem="XSM-SE-Fjy" secondAttribute="bottom" constant="20" id="p3K-se-BF3"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="QbU-Yo-uC7"/>
                     </view>
+                    <connections>
+                        <outlet property="authorDetailButton" destination="XSM-SE-Fjy" id="unX-7g-3IS"/>
+                        <outlet property="goBackButton" destination="jq8-jF-PWR" id="UXD-nm-CAc"/>
+                        <outlet property="singlePhotoImage" destination="gwE-nV-DW4" id="xXN-xf-8tm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QUN-oi-nh5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2567" y="-103"/>
+            <point key="canvasLocation" x="-132" y="660"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -210,7 +241,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1634" y="759"/>
+            <point key="canvasLocation" x="-1366" y="1455"/>
         </scene>
         <!--Search Result View Controller-->
         <scene sceneID="4aD-ht-KZd">
@@ -266,7 +297,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0C5-iZ-bwK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-663" y="759"/>
+            <point key="canvasLocation" x="-394" y="1455"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="Mbc-Fo-5ce">
@@ -316,7 +347,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ln-Jr-c9y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="204" y="759"/>
+            <point key="canvasLocation" x="473" y="1455"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="1UU-25-EcS">

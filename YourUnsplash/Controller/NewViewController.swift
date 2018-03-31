@@ -26,18 +26,23 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         self.newViewTableView.reloadData()
         
+    // This function at same file. it is working
         getSource {
             self.newViewTableView.reloadData()
         }
-        self.newViewTableView.estimatedRowHeight = 200
-        self.newViewTableView.rowHeight = UITableViewAutomaticDimension
         
+//        If I use this class function, is not working.
+        
+//       self.searchResultArray = ResearchGetResults.getArrayBack()
+        
+        DispatchQueue.main.async() {
+            self.newViewTableView.reloadData()
+            print("check4")
+        }
+ 
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        self.newViewTableView.estimatedRowHeight = 200
-        self.newViewTableView.rowHeight = UITableViewAutomaticDimension
         
     }
     
@@ -46,7 +51,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         let apiRootUrl:String = "https://api.unsplash.com/photos/?client_id="
         let apiAccessKey:String = "f36a3f6ba90ed4c4d1872eb8fa50e7933ce1c6b287d44af7c0953c7780953e7c"
         //        let apiSearchKeyWord:String = "&query=" +  keyWordFromSerchView
-        let apiCount:String = "&count=10"
+        let apiCount:String = "&count=30"
         
         //        let jsonUrlString = apiRootUrl + apiAccessKey + apiSearchKeyWord + apiCount
         let jsonUrlString = apiRootUrl + apiAccessKey + apiCount
@@ -83,9 +88,20 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     
+    //identify the segue
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showSinglePhoto", sender: self)
+    }
+    
+    // send data by segue to DetailsViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? SinglePhotoViewController {
+            destination.itemDetails = searchResultArray[(newViewTableView.indexPathForSelectedRow?.row)!]
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("searchResultArray.count=\(searchResultArray.count)")
         return searchResultArray.count
     }
     
