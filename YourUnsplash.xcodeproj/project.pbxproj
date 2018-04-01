@@ -8,16 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		221430F72062A0D4007BBA9B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221430F62062A0D4007BBA9B /* SearchViewController.swift */; };
-		221430FC2062A1B4007BBA9B /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221430FB2062A1B4007BBA9B /* SearchResultViewController.swift */; };
 		221431002062F066007BBA9B /* ResultCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221430FF2062F066007BBA9B /* ResultCellTableViewCell.swift */; };
 		22370CC7206C836800B68540 /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22370CC6206C836800B68540 /* NewViewController.swift */; };
 		22370CC9206C838C00B68540 /* FeaturedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22370CC8206C838C00B68540 /* FeaturedViewController.swift */; };
 		22370CCC206C839400B68540 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22370CCA206C839400B68540 /* AccountViewController.swift */; };
 		22370CCD206C839400B68540 /* CollectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22370CCB206C839400B68540 /* CollectionsViewController.swift */; };
-		2241785A206EB7C200AC97A5 /* ResearchGetResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22417859206EB7C200AC97A5 /* ResearchGetResults.swift */; };
 		2270CD4520618890006B01D4 /* Extension_image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270CD4420618890006B01D4 /* Extension_image.swift */; };
 		22750E382060A9AC00647994 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22750E372060A9AC00647994 /* AppDelegate.swift */; };
-		22750E3A2060A9AC00647994 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22750E392060A9AC00647994 /* DetailsViewController.swift */; };
 		22750E3D2060A9AC00647994 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22750E3B2060A9AC00647994 /* Main.storyboard */; };
 		22750E402060A9AC00647994 /* YourUnsplash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22750E3E2060A9AC00647994 /* YourUnsplash.xcdatamodeld */; };
 		22750E422060A9AC00647994 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22750E412060A9AC00647994 /* Assets.xcassets */; };
@@ -30,17 +27,14 @@
 
 /* Begin PBXFileReference section */
 		221430F62062A0D4007BBA9B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		221430FB2062A1B4007BBA9B /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		221430FF2062F066007BBA9B /* ResultCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCellTableViewCell.swift; sourceTree = "<group>"; };
 		22370CC6206C836800B68540 /* NewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
 		22370CC8206C838C00B68540 /* FeaturedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedViewController.swift; sourceTree = "<group>"; };
 		22370CCA206C839400B68540 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		22370CCB206C839400B68540 /* CollectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionsViewController.swift; sourceTree = "<group>"; };
-		22417859206EB7C200AC97A5 /* ResearchGetResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchGetResults.swift; sourceTree = "<group>"; };
 		2270CD4420618890006B01D4 /* Extension_image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_image.swift; sourceTree = "<group>"; };
 		22750E342060A9AC00647994 /* YourUnsplash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourUnsplash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22750E372060A9AC00647994 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		22750E392060A9AC00647994 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		22750E3C2060A9AC00647994 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		22750E3F2060A9AC00647994 /* YourUnsplash.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = YourUnsplash.xcdatamodel; sourceTree = "<group>"; };
 		22750E412060A9AC00647994 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,7 +74,6 @@
 			children = (
 				22750E4C2060AA1E00647994 /* CallUnsplash.swift */,
 				2270CD4420618890006B01D4 /* Extension_image.swift */,
-				22417859206EB7C200AC97A5 /* ResearchGetResults.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -89,13 +82,11 @@
 			isa = PBXGroup;
 			children = (
 				22370CC6206C836800B68540 /* NewViewController.swift */,
-				22B39523206FB5E600B0302D /* SinglePhotoViewController.swift */,
 				22370CC8206C838C00B68540 /* FeaturedViewController.swift */,
+				221430F62062A0D4007BBA9B /* SearchViewController.swift */,
 				22370CCB206C839400B68540 /* CollectionsViewController.swift */,
 				22370CCA206C839400B68540 /* AccountViewController.swift */,
-				221430F62062A0D4007BBA9B /* SearchViewController.swift */,
-				221430FB2062A1B4007BBA9B /* SearchResultViewController.swift */,
-				22750E392060A9AC00647994 /* DetailsViewController.swift */,
+				22B39523206FB5E600B0302D /* SinglePhotoViewController.swift */,
 				22C8426B206DED9300390AAF /* Cell */,
 			);
 			path = Controller;
@@ -299,14 +290,11 @@
 				22370CCD206C839400B68540 /* CollectionsViewController.swift in Sources */,
 				22B39524206FB5E600B0302D /* SinglePhotoViewController.swift in Sources */,
 				221430F72062A0D4007BBA9B /* SearchViewController.swift in Sources */,
-				221430FC2062A1B4007BBA9B /* SearchResultViewController.swift in Sources */,
 				221431002062F066007BBA9B /* ResultCellTableViewCell.swift in Sources */,
 				22750E402060A9AC00647994 /* YourUnsplash.xcdatamodeld in Sources */,
 				22370CC9206C838C00B68540 /* FeaturedViewController.swift in Sources */,
-				22750E3A2060A9AC00647994 /* DetailsViewController.swift in Sources */,
 				22750E382060A9AC00647994 /* AppDelegate.swift in Sources */,
 				22B3952720701FB500B0302D /* ResearchService.swift in Sources */,
-				2241785A206EB7C200AC97A5 /* ResearchGetResults.swift in Sources */,
 				22370CC7206C836800B68540 /* NewViewController.swift in Sources */,
 				22750E4D2060AA1E00647994 /* CallUnsplash.swift in Sources */,
 				2270CD4520618890006B01D4 /* Extension_image.swift in Sources */,

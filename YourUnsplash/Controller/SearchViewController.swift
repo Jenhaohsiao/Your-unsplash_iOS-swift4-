@@ -32,17 +32,14 @@ class SearchViewController: UIViewController {
     }
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         if let SearchResult = segue.destination as? SearchResultViewController {
-            SearchResult.keyWordFromSerchView = testStringFromSearch
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//         if let SearchResult = segue.destination as? SearchResultViewController {
+//            SearchResult.keyWordFromSerchView = testStringFromSearch
+//        }
+//    }
     
     
-    @IBAction func searchButton(_ sender: UIButton) {
-        
-       
-    }
+
     
 
     override func didReceiveMemoryWarning() {

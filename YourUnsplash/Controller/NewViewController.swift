@@ -11,12 +11,9 @@ import UIKit
 class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let fullScreenSize = UIScreen.main.bounds.size
-    
     var searchResultArray = [UnsplashRoot]()
-    
     @IBOutlet weak var newViewTableView: UITableView!
     
-    let dispatchGroup = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,59 +22,39 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         self.newViewTableView.separatorStyle = .none
         self.newViewTableView.reloadData()
         
-//        If I use this class function, is not working.
+        loadSourceAndShow()
         
+    }
+    
+    fileprivate func loadSourceAndShow() {
         ResearchSearvice().getSource(keyWordFromSerchView: "") { (result) in
             self.searchResultArray = result
-             self.newViewTableView.reloadData()
+            self.newViewTableView.reloadData()
         }
- 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
     }
     
-//    func getSource(completed: @escaping() -> ()){
-//
-//        let apiRootUrl:String = "https://api.unsplash.com/photos/?client_id="
-//        let apiAccessKey:String = "f36a3f6ba90ed4c4d1872eb8fa50e7933ce1c6b287d44af7c0953c7780953e7c"
-//        //        let apiSearchKeyWord:String = "&query=" +  keyWordFromSerchView
-//        let apiCount:String = "&count=30"
-//
-//        //        let jsonUrlString = apiRootUrl + apiAccessKey + apiSearchKeyWord + apiCount
-//        let jsonUrlString = apiRootUrl + apiAccessKey + apiCount
-//        print("jsonUrlString: " + jsonUrlString)
-//
-//        guard let url = URL(string: jsonUrlString) else {
-//            return
-//        }
-//
-//        URLSession.shared.dataTask(with: url) { (data, response, err) in
-//            //perhaps check err
-//            guard let data = data else {return}
-//
-//            do {
-//                self.searchResultArray = try JSONDecoder().decode([UnsplashRoot].self, from: data)
-//                print("Got source successful")
-//
-//                DispatchQueue.main.async{
-//
-//                    completed()
-//                }
-//
-//            }catch let jsonErr{
-//                print("Error serializing json")
-//                print(jsonErr)
-//            }
-//
-//            }.resume()
-//    }
-    
+    // load more data when the view reach the bottom
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        
+        
+        let lastElement = searchResultArray.count - 1
+        if indexPath.row == lastElement {
+            if searchResultArray.count != 0 {
+                print("need more data")
+            }
+          
+        }
+    }
     
     //identify the segue
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showSinglePhoto", sender: self)
+        
     }
     
     // send data by segue to DetailsViewController
