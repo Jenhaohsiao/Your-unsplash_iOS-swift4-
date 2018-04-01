@@ -40,8 +40,6 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     // load more data when the view reach the bottom
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        
-        
         let lastElement = searchResultArray.count - 1
         if indexPath.row == lastElement {
             if searchResultArray.count != 0 {
@@ -80,19 +78,11 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         //set up the profile image
         let profileImageUrl = self.searchResultArray[indexPath.row].user?.profile_image?.medium
         cell.profile_image.downloadedFrom(url: (profileImageUrl)!)
-        cell.profile_image.layer.cornerRadius = 10
-        cell.profile_image.layer.masksToBounds = true
-        
+  
         //Set up the Lable
         let profileNameString = self.searchResultArray[indexPath.row].user?.name
         cell.profile_name.text = "  \(profileNameString!)  "
-        cell.profile_name.font = UIFont.systemFont(ofSize: 20.0)
-        cell.profile_name.alpha = 0.6
-        
-        cell.profile_name.layer.cornerRadius = 5
-        cell.profile_name.layer.backgroundColor = UIColor.black.cgColor
-        cell.profile_name.textColor = UIColor.white
-        
+
         return cell
         
         
