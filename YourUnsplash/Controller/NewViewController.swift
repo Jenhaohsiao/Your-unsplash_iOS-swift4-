@@ -23,14 +23,10 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     fileprivate func updataeUI() {
-        ResearchSearvice().getSource(keyWordFromSerchView: "") { (result) in
+        ResearchService().getSource(keyWordFromSerchView: "") { (result) in
             self.searchResultArray = result
             self.newViewTableView.reloadData()
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
     }
     
     // load more data when the view reach the bottom
@@ -41,7 +37,6 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             if searchResultArray.count != 0 {
                 print("need more data")
             }
-            
         }
     }
     

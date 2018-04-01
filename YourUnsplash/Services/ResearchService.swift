@@ -7,7 +7,7 @@
 //
 
 import Foundation
-public class ResearchSearvice {
+public class ResearchService {
     func getSource(keyWordFromSerchView:String,completed: @escaping(_ result: [UnsplashRoot]) -> ()){
         
         let apiRootUrl:String = "https://api.unsplash.com/photos/?client_id="
