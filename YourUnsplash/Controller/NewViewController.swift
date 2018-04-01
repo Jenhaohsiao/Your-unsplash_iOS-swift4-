@@ -1,12 +1,8 @@
-//
 //  NewViewController.swift
-//  
-//
 //  Created by JenHao on 2018-03-28.
 //
 
 import UIKit
-
 
 class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -22,11 +18,11 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         self.newViewTableView.separatorStyle = .none
         self.newViewTableView.reloadData()
         
-        loadSourceAndShow()
+        updataeUI()
         
     }
     
-    fileprivate func loadSourceAndShow() {
+    fileprivate func updataeUI() {
         ResearchSearvice().getSource(keyWordFromSerchView: "") { (result) in
             self.searchResultArray = result
             self.newViewTableView.reloadData()
@@ -45,7 +41,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             if searchResultArray.count != 0 {
                 print("need more data")
             }
-          
+            
         }
     }
     
@@ -67,26 +63,33 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         return searchResultArray.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "customCell"
-        let cell = self.newViewTableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! ResultCellTableViewCell
-        
-        // set up the image
+    
+    //Setup the cell content
+    func configure(cell:ResultCellTableViewCell, forItemAt indexPath: IndexPath) {
+        //set up the image
         let imageUrl = self.searchResultArray[indexPath.row].urls?.regular
         cell.cellImage.downloadedFrom(url: imageUrl!)
         
-        //set up the profile image
+        //set up the author image
         let profileImageUrl = self.searchResultArray[indexPath.row].user?.profile_image?.medium
         cell.profile_image.downloadedFrom(url: (profileImageUrl)!)
-  
-        //Set up the Lable
+        
+        //Set up the author name Lable
         let profileNameString = self.searchResultArray[indexPath.row].user?.name
         cell.profile_name.text = "  \(profileNameString!)  "
-
-        return cell
-        
-        
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = "customCell"
+        
+        guard let cell = self.newViewTableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? ResultCellTableViewCell else {
+            fatalError("Could not dequeue a cell")
+        }
+        
+        configure(cell: cell, forItemAt: indexPath)
+        return cell
+    }
+    
     
     
     // Setup the height For Row, by image size
