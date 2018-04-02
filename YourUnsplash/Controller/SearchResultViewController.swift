@@ -1,44 +1,53 @@
-//  NewViewController.swift
-//  Created by JenHao on 2018-03-28.
+//
+//  SearchResultViewController.swift
+//  YourUnsplash
+//
+//  Created by JenHao on 2018-04-02.
+//  Copyright © 2018 JenHao. All rights reserved.
 //
 
 import UIKit
 
-class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SearchResultViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let fullScreenSize = UIScreen.main.bounds.size
+    @IBOutlet weak var searchResultTableView: UITableView!
+    var searchKeyWord = String()
     var searchResultArray = [UnsplashRoot]()
-    @IBOutlet weak var newViewTableView: UITableView!
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        updataeUI()
+        // Do any additional setup after loading the view.
         
+        print("searchKeyWord = \(self.searchKeyWord)")
+        updataeUI()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
+    
     fileprivate func updataeUI() {
-        self.newViewTableView.delegate = self
-        self.newViewTableView.dataSource = self
-        self.newViewTableView.separatorStyle = .none
-        self.newViewTableView.reloadData()
+        self.searchResultTableView.delegate = self
+        self.searchResultTableView.dataSource = self
+        self.searchResultTableView.separatorStyle = .none
+        self.searchResultTableView.reloadData()
         
-        ResearchService().getSource(keyWordFromSerchView: "") { (result) in
+        ResearchService().getSource(keyWordFromSerchView: self.searchKeyWord) { (result) in
             self.searchResultArray = result
-            self.newViewTableView.reloadData()
+            self.searchResultTableView.reloadData()
         }
     }
     
     // load more data when the view reach the bottom
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        print("1.searchResultArray.count=\(self.searchResultArray.count)")
+       
         let lastElement = searchResultArray.count - 1
-        print("lastElement=\(lastElement)")
         if indexPath.row == lastElement {
             if searchResultArray.count != 0 {
-                print("need more data")
-                print("2.searchResultArray.count=\(self.searchResultArray.count)")
+                print("need more data") 
             }
         }
     }
@@ -52,7 +61,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     // send data by segue to DetailsViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? SinglePhotoViewController {
-            destination.itemDetails = searchResultArray[(newViewTableView.indexPathForSelectedRow?.row)!]
+            destination.itemDetails = searchResultArray[(searchResultTableView.indexPathForSelectedRow?.row)!]
         }
     }
     
@@ -78,9 +87,9 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "customCell"
+        let cellIdentifier = "customCell2"
         
-        guard let cell = self.newViewTableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? ResultCellTableViewCell else {
+        guard let cell = self.searchResultTableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? ResultCellTableViewCell else {
             fatalError("Could not dequeue a cell")
         }
         
@@ -99,12 +108,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         return CGFloat(rowHight)
     }
+ 
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
+
 }
