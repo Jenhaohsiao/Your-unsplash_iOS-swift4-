@@ -30,11 +30,34 @@ class SinglePhotoViewController: UIViewController {
         let imageUrl = itemDetails?.urls?.regular
         self.singlePhotoImage.downloadedFrom(url: imageUrl!)
         
-        let authorImageUrl = itemDetails?.user?.profile_image?.medium
-        let authorImage = UIImageView()
-        authorImage.downloadedFrom(url: authorImageUrl!)
+        var authorImageUrl = itemDetails?.user?.profile_image?.medium
         
-        self.authorButtonImage.setBackgroundImage(authorImage.image, for: .normal)
+        let session = URLSession(configuration: .default)
+        let downloadPicTask = session.dataTask(with: authorImageUrl!) { (data, response, error) in
+            // The download has finished.
+            if let e = error {
+                print("Error downloading cat picture: \(e)")
+            } else {
+                // No errors found.
+                // It would be weird if we didn't have a response, so check for that too.
+                if let res = response as? HTTPURLResponse {
+                    print("Downloaded cat picture with response code \(res.statusCode)")
+                    if let imageData = data {
+                        // Finally convert that Data into an image and do what you wish with it.
+                        let image = UIImage(data: imageData)
+                        self.authorButtonImage.setBackgroundImage(image, for: .normal)
+                        // Do something with your image.
+                    } else {
+                        print("Couldn't get image: Image is nil")
+                    }
+                } else {
+                    print("Couldn't get response code for some reason")
+                }
+            }
+        }
+        downloadPicTask.resume()
+        
+//        self.authorButtonImage.setBackgroundImage(authorImage, for: .normal)
         
         let authorNameUrl = itemDetails?.user?.name
         self.authorNameLabel.text = authorNameUrl!

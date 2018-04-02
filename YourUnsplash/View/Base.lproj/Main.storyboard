@@ -102,7 +102,7 @@
             </objects>
             <point key="canvasLocation" x="-751" y="-103"/>
         </scene>
-        <!--Search-->
+        <!--Search View Controller-->
         <scene sceneID="HWf-8z-N54">
             <objects>
                 <viewController id="dgF-bI-Yig" customClass="SearchViewController" customModule="YourUnsplash" customModuleProvider="target" sceneMemberID="viewController">
@@ -111,7 +111,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="No6-ZS-Hkf">
-                                <rect key="frame" x="40" y="215" width="295" height="29"/>
+                                <rect key="frame" x="40" y="259" width="295" height="29"/>
                                 <segments>
                                     <segment title="All"/>
                                     <segment title="Portrait"/>
@@ -119,23 +119,23 @@
                                 </segments>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orientation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o4S-bs-XNh">
-                                <rect key="frame" x="40" y="174" width="85" height="21"/>
+                                <rect key="frame" x="40" y="218" width="85" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0x-gp-dFg">
-                                <rect key="frame" x="163.66666666666666" y="343" width="48" height="30"/>
+                                <rect key="frame" x="163.66666666666666" y="387" width="48" height="30"/>
                                 <color key="backgroundColor" red="0.23028131442278993" green="0.0" blue="0.33012872409326421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.82002411719934687" green="1" blue="0.84839431161025547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Search"/>
                                 <connections>
                                     <action selector="searchByKeyWordButton:" destination="dgF-bI-Yig" eventType="touchUpInside" id="VXB-SO-RD7"/>
-                                    <segue destination="QY9-UI-bTN" kind="show" id="Rnh-52-CIB"/>
+                                    <segue destination="eUG-B3-eI1" kind="show" identifier="showSearchResult" id="D3g-LC-Bmb"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="afN-yr-D9J">
-                                <rect key="frame" x="30" y="104" width="315" height="30"/>
+                                <rect key="frame" x="30" y="148" width="315" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -156,7 +156,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BvP-f7-vQN"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" id="yHV-SW-Tm5"/>
+                    <navigationItem key="navigationItem" id="nUy-Is-iOE"/>
                     <connections>
                         <outlet property="SearchButtonText" destination="E0x-gp-dFg" id="Ql7-18-plt"/>
                         <outlet property="orientationSegmented" destination="No6-ZS-Hkf" id="L6g-Mf-1UN"/>
@@ -165,23 +165,38 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DXs-Tx-cDF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="-102.70935960591133"/>
+            <point key="canvasLocation" x="132" y="692"/>
         </scene>
-        <!--View Controller-->
+        <!--Search Result View Controller-->
         <scene sceneID="MWc-lc-t4c">
             <objects>
-                <viewController id="eUG-B3-eI1" sceneMemberID="viewController">
+                <viewController id="eUG-B3-eI1" customClass="SearchResultViewController" customModule="YourUnsplash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x9q-Jb-LDL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ylx-Mo-0xF">
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ylx-Mo-0xF" firstAttribute="leading" secondItem="NjN-XH-uE2" secondAttribute="leading" id="bwA-cH-uOG"/>
+                            <constraint firstItem="NjN-XH-uE2" firstAttribute="trailing" secondItem="ylx-Mo-0xF" secondAttribute="trailing" id="p0u-tn-ceb"/>
+                            <constraint firstItem="ylx-Mo-0xF" firstAttribute="top" secondItem="NjN-XH-uE2" secondAttribute="top" id="qHx-Pa-ptI"/>
+                            <constraint firstItem="NjN-XH-uE2" firstAttribute="bottom" secondItem="ylx-Mo-0xF" secondAttribute="bottom" id="zk2-rE-Z4M"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="NjN-XH-uE2"/>
                     </view>
                     <navigationItem key="navigationItem" id="c4M-fg-1Uw"/>
+                    <connections>
+                        <outlet property="searchResultTableView" destination="ylx-Mo-0xF" id="qzd-Xt-OSj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QdJ-hk-DCp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="618" y="678"/>
+            <point key="canvasLocation" x="-724" y="708"/>
         </scene>
         <!--Collections-->
         <scene sceneID="Evu-Xs-DO0">
@@ -197,7 +212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QxY-A8-ZOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="972" y="-103"/>
+            <point key="canvasLocation" x="1914.4000000000001" y="-103.44827586206897"/>
         </scene>
         <!--Account-->
         <scene sceneID="KWR-PH-e4b">
@@ -213,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o6H-T9-Z3F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1761" y="-103"/>
+            <point key="canvasLocation" x="2703.1999999999998" y="-103.44827586206897"/>
         </scene>
         <!--Single Photo View Controller-->
         <scene sceneID="AAY-rn-Rel">
@@ -251,7 +266,6 @@
                                     <constraint firstAttribute="width" constant="50" id="3lv-YY-LL8"/>
                                     <constraint firstAttribute="height" constant="50" id="tKi-HC-FYX"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
                                 <connections>
                                     <segue destination="5IZ-20-Hek" kind="show" id="8dd-e4-QAV"/>
                                 </connections>
@@ -386,7 +400,7 @@
                     <connections>
                         <segue destination="LWL-o4-VYp" kind="relationship" relationship="viewControllers" id="dkn-jl-wGq"/>
                         <segue destination="zTD-iq-FK4" kind="relationship" relationship="viewControllers" id="uyb-sc-V2i"/>
-                        <segue destination="dgF-bI-Yig" kind="relationship" relationship="viewControllers" id="BpM-cx-BKI"/>
+                        <segue destination="75I-YV-Bxb" kind="relationship" relationship="viewControllers" id="BpM-cx-BKI"/>
                         <segue destination="IT5-m7-Wpj" kind="relationship" relationship="viewControllers" id="8Ye-aP-SK2"/>
                         <segue destination="gLu-SG-hbV" kind="relationship" relationship="viewControllers" id="Whh-dr-y6f"/>
                     </connections>
@@ -395,23 +409,24 @@
             </objects>
             <point key="canvasLocation" x="132" y="-1084"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="qAZ-yi-DLn">
+        <!--Search-->
+        <scene sceneID="VJq-Z3-F8Z">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QY9-UI-bTN" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="75I-YV-Bxb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" id="yHV-SW-Tm5"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Slp-y5-zQ5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gAm-VI-mWS">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="eUG-B3-eI1" kind="relationship" relationship="rootViewController" id="Scb-bX-hK4"/>
+                        <segue destination="dgF-bI-Yig" kind="relationship" relationship="rootViewController" id="lJU-cN-oTt"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aGU-Ai-Xyp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VTM-XG-ZVI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-505" y="678"/>
+            <point key="canvasLocation" x="132" y="-102.70935960591133"/>
         </scene>
     </scenes>
     <resources>
