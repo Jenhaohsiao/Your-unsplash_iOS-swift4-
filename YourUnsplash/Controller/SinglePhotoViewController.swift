@@ -10,18 +10,34 @@ import UIKit
 
 class SinglePhotoViewController: UIViewController {
     
+    
+    @IBOutlet weak var authorButtonImage: UIButton!
+    
+    @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var singlePhotoImage: UIImageView!
     @IBOutlet weak var goBackButton: UIButton!
-    @IBOutlet weak var authorDetailButton: UIButton!
     
     var itemDetails: UnsplashRoot?
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupPhoto()
+    }
+    
+    fileprivate func setupPhoto() {
         let imageUrl = itemDetails?.urls?.regular
-        singlePhotoImage.downloadedFrom(url: imageUrl!)
+        self.singlePhotoImage.downloadedFrom(url: imageUrl!)
         
+        let authorImageUrl = itemDetails?.user?.profile_image?.medium
+        let authorImage = UIImageView()
+        authorImage.downloadedFrom(url: authorImageUrl!)
+        
+        self.authorButtonImage.setBackgroundImage(authorImage.image, for: .normal)
+        
+        let authorNameUrl = itemDetails?.user?.name
+        self.authorNameLabel.text = authorNameUrl!
     }
     
     @IBAction func goBackAction(_ sender: Any) {
@@ -42,15 +58,15 @@ class SinglePhotoViewController: UIViewController {
     
     @IBAction func saveImage(_ sender: Any) {
 //
-//        let imageData = UIImageJPEGRepresentation(showUIimage.image!, 1.0)
-//        let compressdImage = UIImage(data:imageData!)
-//        UIImageWriteToSavedPhotosAlbum(compressdImage!, nil, nil, nil)
-//
-//        let alert = UIAlertController(title: "Saved", message: "This image has been saved", preferredStyle: .alert)
-//
-//        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-//        alert.addAction(okAction)
-//        self.present(alert,animated: true,completion: nil)
+        let imageData = UIImageJPEGRepresentation(self.singlePhotoImage.image!, 1.0)
+        let compressdImage = UIImage(data:imageData!)
+        UIImageWriteToSavedPhotosAlbum(compressdImage!, nil, nil, nil)
+
+        let alert = UIAlertController(title: "Saved", message: "This image has been saved", preferredStyle: .alert)
+
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert,animated: true,completion: nil)
     }
     
     // get data from API and put into struct
