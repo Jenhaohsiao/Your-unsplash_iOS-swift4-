@@ -178,6 +178,50 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ylx-Mo-0xF">
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="keyWordCell" rowHeight="200" id="i2E-gN-crl" customClass="KeyWordResultTableViewCell" customModule="YourUnsplash" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i2E-gN-crl" id="oRA-5Q-Y69">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199.66666666666666"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r6s-Qx-Wse">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="199.66666666666666"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0D8-di-tce">
+                                                    <rect key="frame" x="30" y="124" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="R9f-RN-1E9"/>
+                                                        <constraint firstAttribute="height" constant="50" id="pm3-Xm-aEj"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPt-CE-nVU">
+                                                    <rect key="frame" x="90" y="148" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ZPt-CE-nVU" secondAttribute="bottom" constant="20" id="6uW-Qk-RHo"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="0D8-di-tce" secondAttribute="bottom" constant="15" id="CBN-oH-tUd"/>
+                                                <constraint firstItem="r6s-Qx-Wse" firstAttribute="top" secondItem="oRA-5Q-Y69" secondAttribute="top" id="Gn3-gx-2PD"/>
+                                                <constraint firstItem="0D8-di-tce" firstAttribute="leading" secondItem="oRA-5Q-Y69" secondAttribute="leadingMargin" constant="15" id="OrN-on-clA"/>
+                                                <constraint firstItem="ZPt-CE-nVU" firstAttribute="leading" secondItem="0D8-di-tce" secondAttribute="trailing" constant="10" id="S6g-ok-JeW"/>
+                                                <constraint firstAttribute="trailing" secondItem="r6s-Qx-Wse" secondAttribute="trailing" id="SBE-zw-Sr6"/>
+                                                <constraint firstItem="r6s-Qx-Wse" firstAttribute="leading" secondItem="oRA-5Q-Y69" secondAttribute="leading" id="gb8-Zl-u2E"/>
+                                                <constraint firstAttribute="bottom" secondItem="r6s-Qx-Wse" secondAttribute="bottom" id="hRY-c9-yt0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cellImage" destination="r6s-Qx-Wse" id="aKo-gd-T9u"/>
+                                            <outlet property="cellView" destination="oRA-5Q-Y69" id="Ckj-dq-dGV"/>
+                                            <outlet property="profile_image" destination="0D8-di-tce" id="Kl8-rw-EyT"/>
+                                            <outlet property="profile_name" destination="ZPt-CE-nVU" id="gpf-wp-KH9"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		221431002062F066007BBA9B /* ResultCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221430FF2062F066007BBA9B /* ResultCellTableViewCell.swift */; };
+		222F866E2073518F00B6A187 /* KeyWordResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F866D2073518F00B6A187 /* KeyWordResultTableViewCell.swift */; };
 		22370CC7206C836800B68540 /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22370CC6206C836800B68540 /* NewViewController.swift */; };
 		22370CC9206C838C00B68540 /* FeaturedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22370CC8206C838C00B68540 /* FeaturedViewController.swift */; };
 		22370CCC206C839400B68540 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22370CCA206C839400B68540 /* AccountViewController.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		221430FF2062F066007BBA9B /* ResultCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCellTableViewCell.swift; sourceTree = "<group>"; };
+		222F866D2073518F00B6A187 /* KeyWordResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWordResultTableViewCell.swift; sourceTree = "<group>"; };
 		22370CC6206C836800B68540 /* NewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
 		22370CC8206C838C00B68540 /* FeaturedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedViewController.swift; sourceTree = "<group>"; };
 		22370CCA206C839400B68540 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				221430FF2062F066007BBA9B /* ResultCellTableViewCell.swift */,
+				222F866D2073518F00B6A187 /* KeyWordResultTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				221431002062F066007BBA9B /* ResultCellTableViewCell.swift in Sources */,
 				22750E402060A9AC00647994 /* YourUnsplash.xcdatamodeld in Sources */,
 				22370CC9206C838C00B68540 /* FeaturedViewController.swift in Sources */,
+				222F866E2073518F00B6A187 /* KeyWordResultTableViewCell.swift in Sources */,
 				2237EAA22071EDD4004198AF /* AuthorViewController.swift in Sources */,
 				22750E382060A9AC00647994 /* AppDelegate.swift in Sources */,
 				2237EAA02071EA0A004198AF /* SearchViewController.swift in Sources */,

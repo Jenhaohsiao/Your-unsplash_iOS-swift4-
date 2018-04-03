@@ -13,6 +13,7 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var searchResultTableView: UITableView!
     var searchKeyWord = String()
     var searchResultArray = [UnsplashRoot]()
+    let cellIdentifier = "keyWordCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +73,7 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
     
     
     //Setup the cell content
-    func configure(cell:ResultCellTableViewCell, forItemAt indexPath: IndexPath) {
+    func configure(cell:KeyWordResultTableViewCell, forItemAt indexPath: IndexPath) {
         //set up the image
         let imageUrl = self.searchResultArray[indexPath.row].urls?.regular
         cell.cellImage.downloadedFrom(url: imageUrl!)
@@ -87,9 +88,9 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "customCell2"
         
-        guard let cell = self.searchResultTableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? ResultCellTableViewCell else {
+        
+        guard let cell = self.searchResultTableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? KeyWordResultTableViewCell else {
             fatalError("Could not dequeue a cell")
         }
         
