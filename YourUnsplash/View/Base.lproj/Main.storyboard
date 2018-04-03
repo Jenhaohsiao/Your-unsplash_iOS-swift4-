@@ -57,12 +57,6 @@
                                                 <constraint firstItem="4Ad-UX-ql5" firstAttribute="top" secondItem="YeK-7E-BCl" secondAttribute="top" id="xcB-xR-E6B"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="cellImage" destination="4Ad-UX-ql5" id="fsp-0h-ISe"/>
-                                            <outlet property="cellView" destination="YeK-7E-BCl" id="sRh-0B-DV0"/>
-                                            <outlet property="profile_image" destination="D3v-b4-1Pd" id="2jb-9F-D9r"/>
-                                            <outlet property="profile_name" destination="UMR-hY-l6j" id="LIa-pe-OTD"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

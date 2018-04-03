@@ -9,7 +9,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     let fullScreenSize = UIScreen.main.bounds.size
     var searchResultArray = [UnsplashRoot]()
     @IBOutlet weak var newViewTableView: UITableView!
-    
+    let cellIdentifier = "customCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         self.newViewTableView.dataSource = self
         self.newViewTableView.separatorStyle = .none
         self.newViewTableView.reloadData()
+        self.newViewTableView.register(ResultCellTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         
         ResearchService().getSource(keyWordFromSerchView: "") { (result) in
             self.searchResultArray = result
@@ -78,7 +79,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "customCell"
+        
         
         guard let cell = self.newViewTableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? ResultCellTableViewCell else {
             fatalError("Could not dequeue a cell")

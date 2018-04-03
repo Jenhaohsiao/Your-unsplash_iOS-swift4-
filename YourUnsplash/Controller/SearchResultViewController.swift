@@ -13,6 +13,7 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var searchResultTableView: UITableView!
     var searchKeyWord = String()
     var searchResultArray = [UnsplashRoot]()
+    let cellIdentifier = "customCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,8 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
         self.searchResultTableView.dataSource = self
         self.searchResultTableView.separatorStyle = .none
         self.searchResultTableView.reloadData()
+        self.searchResultTableView.register(ResultCellTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+      
         
         ResearchService().getSource(keyWordFromSerchView: self.searchKeyWord) { (result) in
             self.searchResultArray = result
@@ -87,9 +90,8 @@ class SearchResultViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "customCell2"
-        
-        guard let cell = self.searchResultTableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? ResultCellTableViewCell else {
+       
+        guard let cell = self.searchResultTableView.dequeueReusableCell(withIdentifier: self.cellIdentifier) as? ResultCellTableViewCell else {
             fatalError("Could not dequeue a cell")
         }
         
